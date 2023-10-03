@@ -6,17 +6,29 @@ import { Text, View } from 'react-native';
 import { SideMenu } from './src/navigator/SideMenu';
 import { SideBasicMenu } from './src/navigator/SideBasicMenu';
 import { TabsMenu } from './src/navigator/TabsMenu';
+import { AuthProvider } from './src/context/authContext/AuthContext';
 
 
 
 const App = () => {
   return (
     <NavigationContainer>
-      <SideMenu />
-      {/* <SideBasicMenu /> */}
-      {/* <StackNavigator /> */}
-      {/* <TabsMenu /> */}
+      <AppState>
+
+        <SideMenu />
+        {/* <SideBasicMenu /> */}
+        {/* <StackNavigator /> */}
+        {/* <TabsMenu /> */}
+      </AppState>
     </NavigationContainer>
+  )
+}
+
+const AppState = ({ children }: any) => {
+  return (
+    <AuthProvider>
+      {children}
+    </AuthProvider>
   )
 }
 
